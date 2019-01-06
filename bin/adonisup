@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
+
+adonis new $1 --yarn --api-only
+cd $1
+git init .
+git commit -m "Create project"
+
+cp "${DIR}/template/.npmrc" .npmrc
+git add .
+git commit -m "Prevent package-lock.json"
+
+yarn add pg
+cp "${DIR}/template/config/database.js" config/database.js
+git add .
+git commit -m "Add Postgres"
+
+adonis install @adonisjs/vow --yarn
+cp "${DIR}/template/start/app.js" start/app.js
+git add .
+git commit -m "Add testing"
+
+yarn add -D eslint \
+            babel-eslint \
+            eslint-config-codingitwrong \
+            prettier \
+            eslint-config-prettier \
+            eslint-plugin-prettier
+cp "${DIR}/template/.eslintrc.js" .eslintrc.js
+cp "${DIR}/template/.prettierrc.js" .prettierrc.js
+git add .
+git commit -m "Add eslint and prettier"
+
+cp -r "${DIR}/template/.circleci" .circleci
+git add .
+git commit -m "Add CircleCI config"
