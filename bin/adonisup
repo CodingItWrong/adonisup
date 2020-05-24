@@ -32,6 +32,6 @@ cp "${DIR}/template/.prettierrc.js" .prettierrc.js
 git add .
 git commit -m "Add eslint and prettier"
 
-cp -r "${DIR}/template/.circleci" .circleci
+cp -r "${DIR}/template/github" .github
 git add .
-git commit -m "Add CircleCI config"
+git commit -m "Set up GitHub Actions workflow"
