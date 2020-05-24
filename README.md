@@ -13,6 +13,10 @@ Adonis API project creator with my default configuration:
 - Yarn
 - Adonis CLI
 
+```sh
+$ npm install -g @adonisjs/cli
+```
+
 ## Installation
 
 Clone the repo and add `adonisup/bin` to your path.
